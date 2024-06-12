@@ -21,13 +21,14 @@ app.get("/", (req, res) => {
     const resultElement = document.getElementById("result");
 
     sendApiRequestElement.addEventListener('click', async () => {
+      const apiURL = window.location.protocol + "//${process.env.HOSTNAME_WITH_PORT}/api";
+      resultElement.innerText = "Sending request to : '" + apiURL + "'";
       try {
-        const apiURL = window.location.protocol + "//${process.env.HOSTNAME_WITH_PORT}/api";
         const response = await fetch(apiURL);
         const result = await response.text();
-        resultElement.innerText = "Sending request to '" + apiURL + "'\\nResult: " + result;
+        resultElement.innerText += "\\nResult: " + result;
       } catch (e) {
-        resultElement.innerText = "Error : " + e.message;
+        resultElement.innerText += "\\nResult: Error : " + e.message;
       }
     });
   </script>
