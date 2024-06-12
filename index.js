@@ -19,13 +19,13 @@ app.get("/", (req, res) => {
   <script>
     const sendApiRequestElement = document.getElementById("send-api-request");
     const resultElement = document.getElementById("result");
-    const apiURL = window.location.protocol + "//${process.env.HOSTNAME_WITH_PORT}/api";
 
     sendApiRequestElement.addEventListener('click', async () => {
       try {
+        const apiURL = window.location.protocol + "//${process.env.HOSTNAME_WITH_PORT}/api";
         const response = await fetch(apiURL);
         const result = await response.text();
-        resultElement.innerText = result;
+        resultElement.innerText = "Sending request to '" + apiURL + "'\\nResult: " + result;
       } catch (e) {
         resultElement.innerText = "Error : " + e.message;
       }
