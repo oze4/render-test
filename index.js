@@ -19,7 +19,6 @@ app.get("/", (req, res) => {
   <script>
     const sendApiRequestElement = document.getElementById("send-api-request");
     const resultElement = document.getElementById("result");
-    console.log(window.location.protocol);
     const apiURL = window.location.protocol + "//${process.env.HOSTNAME_WITH_PORT}/api";
 
     sendApiRequestElement.addEventListener('click', async () => {
